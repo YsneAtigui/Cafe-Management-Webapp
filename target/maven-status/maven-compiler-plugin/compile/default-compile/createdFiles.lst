@@ -1,0 +1,9 @@
+com\servlet\SignUp.class
+com\servlet\Hii.class
+com\servlet\LoginServlet.class
+com\mycompany\cms\resources\JakartaEE10Resource.class
+com\mycompany\cms\JakartaRestConfiguration.class
+dao\UserDao.class
+dao\DbOperation.class
+dao\ConnectionProvider.class
+model\User.class

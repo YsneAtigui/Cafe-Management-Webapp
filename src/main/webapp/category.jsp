@@ -55,12 +55,12 @@
                 padding: 8px 16px;
                 border-radius: 4px;
                 border: none;
-                background-color: #007bff;
+                background-color: #198754;
                 color: #fff;
                 cursor: pointer;
             }
             a {
-                color: #007bff;
+                color: #198754;
                 text-decoration: none;
             }
             a:hover {
@@ -102,9 +102,9 @@
             <br><br>
             <h5>
                 <a href="home.jsp">Home</a>
-                <a href="#">Category management</a>
-                <a href="#">Product management</a>
-                <a href="#">Place Order</a>
+                <a href="category.jsp">Category management</a>
+                <a href="product.jsp">Product management</a>
+                <a href="placeOrder.jsp">Place Order</a>
                 <a href="#">User Management</a>
                 <a href="index.jsp">Logout</a>
             </h5>

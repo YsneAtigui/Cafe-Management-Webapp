@@ -15,12 +15,21 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
                 background-color: #f8f9fa;
-                padding-top: 50px;
             }
             .container {
                 margin-left: 250px; /* Same width as the sidebar */
                 padding: 20px;
+            }
+            a {
+                color: #198754;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
             }
             /* Sidebar styles */
             .sidebar {
@@ -54,9 +63,9 @@
             <br><br>
             <h5>
                 <a href="home.jsp">Home</a>
-                <a href="#">Category management</a>
-                <a href="#">Product management</a>
-                <a href="#">Place Order</a>
+                <a href="category.jsp">Category management</a>
+                <a href="product.jsp">Product management</a>
+                <a href="placeOrder.jsp">Place Order</a>
                 <a href="#">User Management</a>
                 <a href="index.jsp">Logout</a>
             </h5>

@@ -59,12 +59,12 @@
                 padding: 8px 16px;
                 border-radius: 4px;
                 border: none;
-                background-color: #007bff;
+                background-color: #198754;
                 color: #fff;
                 cursor: pointer;
             }
             a {
-                color: #007bff;
+                color: #198754;
                 text-decoration: none;
             }
             a:hover {
@@ -113,9 +113,9 @@
             <br><br>
             <h5>
                 <a href="home.jsp">Home</a>
-                <a href="#">Category management</a>
-                <a href="#">Product management</a>
-                <a href="#">Place Order</a>
+                <a href="category.jsp">Category Management</a>
+                <a href="product.jsp">Product Management</a>
+                <a href="placeOrder.jsp">Place Order</a>
                 <a href="#">User Management</a>
                 <a href="index.jsp">Logout</a>
             </h5>
@@ -131,9 +131,10 @@
                 <!-- Hidden input field to store product ID for update -->
                 <input type="hidden" id="productId" name="productId">
 
-                Product Name: <input type="text" id="name" name="name" required>
-
-                category :<select id="category" name="category" required>
+                Product Name: &nbsp;&nbsp;<input type="text" id="name" name="name" required>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                category : &nbsp;&nbsp;<select id="category" name="category" required>
                     <option value="">Select a category</option>
                     <c:forEach var="categoryObj" items="${listC}">
                         <% for (Category categoryObj : listC) {%>
@@ -141,11 +142,14 @@
                         <% }%>
                     </c:forEach>
                 </select>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                Price : &nbsp;&nbsp;<input type="text" id="price" name="price" required>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;
 
-                Price: <input type="text" id="price" name="price" required>
-
-
-                <input type="submit" name="action" value="save">
+                <input type="submit" name="action" value="save" id="saveButton">
+                
                 <input type="submit" name="action" value="update" id="updateButton" style="display: none;">
 
             </form>
@@ -173,6 +177,7 @@
                         <td><%= productObj.getPrice()%></td>
                         <td>
                             <a href="#" onclick="populateName('<%= productObj.getId()%>', '<%= productObj.getName()%>', '<%= productObj.getPrice()%>', '<%= productObj.getCategory()%>')">Update</a>
+                            &nbsp;&nbsp;
                             <a href="ProductServlet?action=delete&id=<%= productObj.getId()%>">Delete</a>
                         </td>
                     </tr>
@@ -189,6 +194,7 @@
                     document.getElementById("category").value = category;
 
                     document.getElementById("updateButton").style.display = "inline-block";
+                    document.getElementById("saveButton").style.display = "none";
                 }
             </script>
         </div>

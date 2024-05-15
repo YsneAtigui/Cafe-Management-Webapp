@@ -29,6 +29,20 @@
                 padding: 10px;
                 font-size: 16px;
             }
+            .btn-primary{
+                padding: 8px 16px;
+                border-radius: 4px;
+                border: none;
+                background-color: #198754;
+                color: #fff;
+                cursor: pointer;
+            }
+            .btn-primary:hover{
+                background-color: #198754;
+            }
+            .btn-link {
+                color: #198754;
+            }
             /* Sidebar styles */
         .sidebar {
             height: 100%;

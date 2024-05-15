@@ -25,15 +25,13 @@ public class DbOperation {
         }
     }
 
-    public static ResultSet getData(String query) {
-        try {
+    public static ResultSet getData(String query) throws SQLException {
+        
             Connection con = ConnectionProvider.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
             return ps.executeQuery();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Message", JOptionPane.ERROR_MESSAGE);
-            return null;
-        }
+        
+        
     }
 }
 

@@ -45,6 +45,18 @@
             <version>15.1.0</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>itext</groupId>
+            <artifactId>itext</artifactId>
+            <version>1.02b</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>top.jfunc.json</groupId>
+            <artifactId>Json-Gson</artifactId>
+            <version>1.0</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     
     <build>

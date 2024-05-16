@@ -1,7 +1,9 @@
 dao\ProductDao.class
 com\servlet\CategoryServlet.class
 com\servlet\LoginServlet.class
+com\servlet\ChangePasswordServlet.class
 com\mycompany\cms\JakartaRestConfiguration.class
+com\servlet\ForgetPasswordServlet.class
 dao\UserDao.class
 dao\ConnectionProvider.class
 com\servlet\SignUp.class

@@ -53,7 +53,7 @@
                 color: #fff;
                 cursor: pointer;
             }
-            
+
             button {
                 padding: 8px 16px;
                 border-radius: 4px;
@@ -177,7 +177,7 @@
 
                     <label for="totalPrice">Total Price:</label>&nbsp;&nbsp;
                     <input type="number" id="totalPrice" name="totalPrice" readonly>
-                    
+
                     <br><br>
                     <button type="button" onclick="calculateTotalPrice()">Calculate Total Price</button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -199,7 +199,9 @@
                     <tbody id="productTableBody2">
                     </tbody>
                 </table>
+                
             </div>
+                        <button onclick="postData()">Post Table Values</button>
         </div>
         <script>
             function fetchProducts() {
@@ -288,6 +290,7 @@
                 };
                 deleteCell.appendChild(deleteLink);
             }
+
         </script>
     </body>
 </html>

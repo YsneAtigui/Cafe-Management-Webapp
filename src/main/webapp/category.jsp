@@ -17,6 +17,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Manage Categories</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -98,14 +99,16 @@
     <body>
         <!-- Sidebar -->
         <div class="sidebar">
-            <h3 class="w3-padding-64"><b>ADIA<br>Cafe & Restaurant</b></h3>
+            <img src="img\Logo.png" alt="Logo" style="width: 200px; height: auto;">
+            <br>
+            
             <br><br>
             <h5>
                 <a href="home.jsp">Home</a>
                 <a href="category.jsp">Category management</a>
                 <a href="product.jsp">Product management</a>
                 <a href="placeOrder.jsp">Place Order</a>
-                <a href="#">User Management</a>
+                <a href="changePassword.jsp">Change Password</a>
                 <a href="index.jsp">Logout</a>
             </h5>
         </div>
@@ -115,12 +118,23 @@
             <h1>Manage Categories</h1>
             <!-- Display form to add new category -->
             <form action="Category" method="post">
+                <% if (request.getAttribute("Failed") != null) {%>
+                <div class="alert alert-danger" role="alert">
+                    <%= request.getAttribute("Failed")%>
+                </div>
+                <% } %>
+
+                <% if (request.getAttribute("Success") != null) {%>
+                <div class="alert alert-success" role="alert">
+                    <%= request.getAttribute("Success")%>
+                </div>
+                <% }%>
                 
                 <!-- Hidden input field to store product ID for update -->
                 <input type="hidden" id="categoryId" name="categoryId">
                 
                 Category Name: <input type="text" name="name" id="categoryName">
-                <input type="submit" name="action" value="save">
+                <input type="submit" name="action" value="save" id="saveButton">
                 <input type="submit" name="action" value="update" id="updateButton" style="display: none;">
             </form>
 
@@ -156,6 +170,7 @@
                     document.getElementById("categoryName").value = name;
                     document.getElementById("categoryId").value = id;
                     document.getElementById("updateButton").style.display = "inline-block";
+                    document.getElementById("saveButton").style.display = "none";
                 }
             </script>
         </div>

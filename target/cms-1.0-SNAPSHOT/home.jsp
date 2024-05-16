@@ -59,14 +59,14 @@
     <body>
         <!-- Sidebar -->
         <div class="sidebar">
-            <h3 class="w3-padding-64"><b>ADIA<br>Cafe & Restaurant</b></h3>
-            <br><br>
+            <img src="img\Logo.png" alt="Logo" style="width: 200px; height: auto;">
+            <br><br><br>
             <h5>
                 <a href="home.jsp">Home</a>
                 <a href="category.jsp">Category management</a>
                 <a href="product.jsp">Product management</a>
                 <a href="placeOrder.jsp">Place Order</a>
-                <a href="#">User Management</a>
+                <a href="changePassword.jsp">Change Password</a>
                 <a href="index.jsp">Logout</a>
             </h5>
         </div>

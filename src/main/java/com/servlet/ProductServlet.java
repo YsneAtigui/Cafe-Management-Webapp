@@ -21,33 +21,32 @@ import model.Product;
 @WebServlet(name = "ProductServlet", urlPatterns = {"/ProductServlet"})
 public class ProductServlet extends HttpServlet {
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        
-        if(action != null && action.equals("delete")) {
+
+        if (action != null && action.equals("delete")) {
             String productId = request.getParameter("id");
-            
+
             // Vérifiez si l'ID de la catégorie est fourni
-            if(productId != null && !productId.isEmpty()) {
+            if (productId != null && !productId.isEmpty()) {
                 try {
                     ProductDao.delete(productId);
-                    
-                    // Rediriger vers la page des catégories après la suppression
-                    response.sendRedirect("product.jsp");
+                    request.setAttribute("Success", "Category Deleted Successfully");
+                    request.getRequestDispatcher("product.jsp").forward(request, response);
+
                 } catch (NumberFormatException e) {
-                    // Gérer les erreurs de conversion d'ID
-                    response.getWriter().println("Invalid category ID");
+                    request.setAttribute("Failed", "Invalid product ID");
+                    request.getRequestDispatcher("product.jsp").forward(request, response);
                 }
             } else {
-                // Gérer les erreurs d'ID de catégorie manquant
-                response.getWriter().println("Category ID is missing");
+                request.setAttribute("Failed", "Invalid product ID");
+                request.getRequestDispatcher("product.jsp").forward(request, response);
             }
         }
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -61,24 +60,28 @@ public class ProductServlet extends HttpServlet {
             product.setName(name);
             product.setCategory(category);
             product.setPrice(price);
-            
+
             ProductDao.save(product);
-            response.sendRedirect("product.jsp");
-        }
-        else if (action != null && action.equals("update")) {
+            
+            request.setAttribute("Success", "Product Saved Successfully");
+            request.getRequestDispatcher("product.jsp").forward(request, response);
+            
+        } else if (action != null && action.equals("update")) {
             int productId = Integer.parseInt(request.getParameter("productId"));
             String name = request.getParameter("name");
             String category = request.getParameter("category");
             String price = request.getParameter("price");
             Product product = new Product();
-            
+
             product.setId(productId);
             product.setName(name);
             product.setCategory(category);
             product.setPrice(price);
-            
+
             ProductDao.update(product);
-            response.sendRedirect("product.jsp");
+            request.setAttribute("Success", "Product Updated Successfully");
+            request.getRequestDispatcher("product.jsp").forward(request, response);
+            
         }
     }
 

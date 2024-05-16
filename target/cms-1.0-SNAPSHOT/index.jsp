@@ -74,12 +74,12 @@
     <body>
         <!-- Sidebar -->
         <div class="sidebar">
-            <h3 class="w3-padding-64"><b>ADIA<br>Cafe & Restaurant</b></h3>
-            <br><br>
+            <img src="img\Logo.png" alt="Logo" style="width: 200px; height: auto;">
+            <br><br><br>
             <h5>
                 <a href="home.jsp">Home</a>
                 <a href="Signup.jsp">Sign Up</a>
-                <a href="#">Forget Password</a>
+                <a href="forgetPassword.jsp">Forget Password</a>
             </h5>
         </div>
 
@@ -92,12 +92,10 @@
             <!-- Login Form -->
             <form class="form-login" action="LoginServlet" method="post">
                 <h2 class="mb-3">Login</h2>
-                <% if (request.getAttribute("error") != null) {%>
-                <p style="color: red;"><%= request.getAttribute("error")%></p>
-                <% } %>
-                <% if (request.getParameter("error") != null) { %>
+                
+                <% if (request.getAttribute("error") != null) { %>
                 <div class="alert alert-danger" role="alert">
-                    Invalid username or password!
+                    <%= request.getAttribute("error")%>
                 </div>
                 <% } %>
                 <div class="mb-3">

@@ -11,6 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Place Order</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -63,7 +64,7 @@
                 cursor: pointer;
             }
             a {
-                color: #007bff;
+                color: #198754;
                 text-decoration: none;
             }
             a:hover {
@@ -108,20 +109,21 @@
     <body>
         <!-- Sidebar -->
         <div class="sidebar">
-            <h3 class="w3-padding-64"><b>ADIA<br>Cafe & Restaurant</b></h3>
-            <br><br>
+            <img src="img\Logo.png" alt="Logo" style="width: 200px; height: auto;">
+            <br><br><br>
             <h5>
                 <a href="home.jsp">Home</a>
                 <a href="category.jsp">Category management</a>
                 <a href="product.jsp">Product management</a>
                 <a href="placeOrder.jsp">Place Order</a>
-                <a href="#">User Management</a>
+                <a href="changePassword.jsp">Change Password</a>
                 <a href="index.jsp">Logout</a>
             </h5>
         </div>
 
         <div class="container">
             <h1>Place Order</h1>
+            <br>
             <div class="form-table-container">
                 <div class="form-container">
                     <form id="orderForm" action="OrderServlet" method="post">
@@ -134,6 +136,7 @@
                         <label for="mobile">Mobile Number:</label>&nbsp;&nbsp;
                         <input type="tel" id="mobile" name="mobile" required>
                         <br><br>
+                        
                         <label for="category">Select Category:</label>
                         <select id="category" name="category" required>
                             <option value="">Select a category</option>
@@ -143,7 +146,7 @@
                             <% }%>
                         </select>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" onclick="fetchProducts()">Fetch Products</button>
+                        <button type="button" onclick="fetchProducts()">Search</button>
                     </form>
                 </div>
 
@@ -163,24 +166,27 @@
                     </table>
                 </div>
             </div>
+                        <br><br>
             <div class="add-product-form">
                 <h2>Add Product</h2>
+                <br>
                 <form id="addProductForm" action="AddProductServlet" method="post">
-                    <label for="productName">Product Name:</label>
+                    <label for="productName">Product Name:</label>&nbsp;&nbsp;
                     <input type="text" id="productName" name="productName" required>
-
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label for="price">Price:</label>&nbsp;&nbsp;
                     <input type="number" id="price" name="price" min="0" step="0.01" required>
-
-                    <label for="quantity">Quantity:</label>&nbsp;&nbsp;
-                    <input type="number" id="quantity" name="quantity" min="1" required>
-
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label for="totalPrice">Total Price:</label>&nbsp;&nbsp;
                     <input type="number" id="totalPrice" name="totalPrice" readonly>
-
+                    
                     <br><br>
-                    <button type="button" onclick="calculateTotalPrice()">Calculate Total Price</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="quantity">Quantity:</label>&nbsp;&nbsp;
+                    <input type="number" id="quantity" name="quantity" min="1" required>
                     &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" onclick="calculateTotalPrice()">Calculate Total Price</button>
+                    <br><br>
                     <button type="button" onclick="addProduct()">Add Product</button>
                 </form>
             </div>
@@ -223,7 +229,7 @@
                                 priceCell.textContent = product.price;
                                 var actionCell = row.insertCell();
                                 var addActionLink = document.createElement("a");
-                                addActionLink.textContent = "ADD";
+                                addActionLink.textContent = "Add";
                                 addActionLink.href = "#"; // Set href to "#" for JavaScript click event
                                 addActionLink.onclick = function () {
                                     // Populate input fields with product name and price

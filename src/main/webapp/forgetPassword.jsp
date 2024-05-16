@@ -84,8 +84,8 @@
     </head>
     <body>
         <div class="sidebar">
-            <h3 class="w3-padding-64"><b>ADIA<br>Cafe & Restaurant</b></h3>
-            <br><br>
+            <img src="img\Logo.png" alt="Logo" style="width: 200px; height: auto;">
+            <br><br><br>
             <h5>
                 <a href="home.jsp">Home</a>
                 <a href="index.jsp">Login</a>
@@ -98,11 +98,15 @@
             <form class="form-signup" action="ForgetPasswordServlet" method="post">
                 <h2 class="mb-3">Change Password</h2>
                 <% if (request.getAttribute("Failed") != null) {%>
-                <p style="color: red;"><%= request.getAttribute("Failed")%></p>
+                <div class="alert alert-danger" role="alert">
+                    <%= request.getAttribute("Failed")%>
+                </div>
                 <% } %>
 
                 <% if (request.getAttribute("Success") != null) {%>
-                <p style="color: green;"><%= request.getAttribute("Success")%></p>
+                <div class="alert alert-success" role="alert">
+                    <%= request.getAttribute("Success")%>
+                </div>
                 <% }%>
                 <div class="mb-3">
                     <label for="Email" class="form-label">Email:</label>

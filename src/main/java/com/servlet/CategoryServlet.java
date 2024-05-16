@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class CategoryServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
@@ -31,7 +31,8 @@ public class CategoryServlet extends HttpServlet {
             Category category = new Category();
             category.setName(categoryName);
             CategoryDao.save(category);
-            response.sendRedirect("category.jsp");
+            request.setAttribute("Success", "Category Saved Successfully");
+            request.getRequestDispatcher("category.jsp").forward(request, response);
         }
         if (action != null && action.equals("update")) {
             int categoryId = Integer.parseInt(request.getParameter("categoryId"));
@@ -40,37 +41,40 @@ public class CategoryServlet extends HttpServlet {
             category.setId(categoryId);
             category.setName(categoryName);
             CategoryDao.update(category);
-            response.sendRedirect("category.jsp");
+            request.setAttribute("Success", "Category Updated Successfully");
+            request.getRequestDispatcher("category.jsp").forward(request, response);
         }
-        
+
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        
-        if(action != null && action.equals("delete")) {
+
+        if (action != null && action.equals("delete")) {
             String categoryId = request.getParameter("id");
-            
+
             // Vérifiez si l'ID de la catégorie est fourni
-            if(categoryId != null && !categoryId.isEmpty()) {
+            if (categoryId != null && !categoryId.isEmpty()) {
                 try {
                     CategoryDao.delete(categoryId);
+
+                    request.setAttribute("Success", "Category Deleted Successfully");
+                    request.getRequestDispatcher("category.jsp").forward(request, response);
                     
-                    // Rediriger vers la page des catégories après la suppression
-                    response.sendRedirect("category.jsp");
                 } catch (NumberFormatException e) {
                     // Gérer les erreurs de conversion d'ID
-                    response.getWriter().println("Invalid category ID");
+                    
+                    request.setAttribute("Failed", "Invalid category ID");
+                    request.getRequestDispatcher("category.jsp").forward(request, response);
                 }
             } else {
-                // Gérer les erreurs d'ID de catégorie manquant
-                response.getWriter().println("Category ID is missing");
+            
+                request.setAttribute("Failed", "Category ID is missing");
+                request.getRequestDispatcher("category.jsp").forward(request, response);
             }
         }
-        
+
     }
 
 }
-
-
-

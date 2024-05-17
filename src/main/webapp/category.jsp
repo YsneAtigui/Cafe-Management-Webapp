@@ -134,6 +134,7 @@
                 <input type="hidden" id="categoryId" name="categoryId">
                 
                 Category Name: <input type="text" name="name" id="categoryName">
+                &nbsp;&nbsp;
                 <input type="submit" name="action" value="save" id="saveButton">
                 <input type="submit" name="action" value="update" id="updateButton" style="display: none;">
             </form>

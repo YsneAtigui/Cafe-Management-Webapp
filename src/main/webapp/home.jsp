@@ -19,10 +19,19 @@
                 margin: 0;
                 padding: 0;
                 background-color: #f8f9fa;
+                
             }
             .container {
                 margin-left: 250px; /* Same width as the sidebar */
                 padding: 20px;
+                height: 100%;
+                position: fixed;
+                background-image: url('img/back.jpg'); /* Add your background image path here */
+                background-size: cover; /* Ensures the background image covers the entire container */
+                background-position: center; /* Centers the background image */
+                background-repeat: no-repeat; 
+                color: #198754; /* Optional: sets text color to white for better contrast */
+                text-align: center;
             }
             a {
                 color: #198754;
@@ -54,6 +63,13 @@
             .w3-padding-64{
                 color :white;
             }
+            h1{
+                font-family: "Monotype Corsiva", cursive;
+            }
+            h3{
+                font-family: "Monotype Corsiva", cursive;
+            }
+            
         </style>
     </head>
     <body>
@@ -70,11 +86,13 @@
                 <a href="index.jsp">Logout</a>
             </h5>
         </div>
-
+        
         <div class="container">
-            <h2>Welcome to Our Website!</h2>
-            <p>This is the main content area of your home page.</p>
-            <p>You can add your slider here, along with other content.</p>
+            <br><br><br><br>
+            <h1><b>Welcome to Our Website!</b></h1>
+            <h1><b>ADIA Cafe & Restaurant Management System</b></h1>
+            <br><br><br>
+            <h3><b>Created By </b> <br>ATIGUI YASSINE <br> EL AMRI FATIMA EZZAHRA <br> BEN DAOUD IMANE </h3>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>

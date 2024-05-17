@@ -123,7 +123,17 @@
 
         <div class="container">
             <h1>Place Order</h1>
-            <br>
+            <% if (request.getAttribute("Failed") != null) {%>
+                <div class="alert alert-danger" role="alert">
+                    <%= request.getAttribute("Failed")%>
+                </div>
+                <% } %>
+
+                <% if (request.getAttribute("Success") != null) {%>
+                <div class="alert alert-success" role="alert">
+                    <%= request.getAttribute("Success")%>
+                </div>
+                <% }%>
             <div class="form-table-container">
                 <div class="form-container">
                     <form id="orderForm" action="OrderServlet" method="post">

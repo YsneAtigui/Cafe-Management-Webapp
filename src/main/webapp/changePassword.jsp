@@ -79,6 +79,18 @@
             .w3-padding-64{
                 color :white;
             }
+            .container {
+                margin-left: 250px; /* Same width as the sidebar */
+                padding: 20px;
+                height: 100%;
+                position: fixed;
+                background-image: url('img/back.jpg'); /* Add your background image path here */
+                background-size: cover; /* Ensures the background image covers the entire container */
+                background-position: center; /* Centers the background image */
+                background-repeat: no-repeat; 
+                color: #198754; /* Optional: sets text color to white for better contrast */
+                text-align: center;
+            }
         </style>
 
     </head>
@@ -99,7 +111,7 @@
         <div class="container">
             
             <form class="form-signup" action="ChangePasswordServlet" method="post">
-                <h2 class="mb-3">Change Password</h2>
+                <h1 class="mb-3" style="font-family: Monotype Corsiva"><b>Change your Password</b></h1>
                 <% if (request.getAttribute("Failed") != null) {%>
                 <div class="alert alert-danger" role="alert">
                     <%= request.getAttribute("Failed")%>

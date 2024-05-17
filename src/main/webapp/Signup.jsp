@@ -15,7 +15,6 @@
         <style>
             body {
                 background-color: #f8f9fa;
-                padding-top: 50px;
             }
             .form-signup {
                 max-width: 530px;
@@ -66,6 +65,18 @@
             .w3-padding-64{
                 color :white;
             }
+            .container {
+                margin-left: 250px; /* Same width as the sidebar */
+                padding: 20px;
+                height: 100%;
+                position: fixed;
+                background-image: url('img/back.jpg'); /* Add your background image path here */
+                background-size: cover; /* Ensures the background image covers the entire container */
+                background-position: center; /* Centers the background image */
+                background-repeat: no-repeat; 
+                color: #198754; /* Optional: sets text color to white for better contrast */
+                text-align: center;
+            }
         </style>
 
     </head>
@@ -77,13 +88,14 @@
             <h5>
                 <a href="home.jsp">Home</a>
                 <a href="index.jsp">Login</a>
-                <a href="#">Forget Password</a>
+                <a href="forgetPassword.jsp">Forget Password</a>
             </h5>
         </div>
         <div class="container">
             <!-- Sign Up Form -->
+            
             <form class="form-signup" action="SignUp" method="post">
-                <h2 class="mb-3">Sign Up</h2>
+                <h1 class="mb-3" style="font-family: Monotype Corsiva"><b>Create an Account</b></h1>
 
                 <% if (request.getAttribute("Failed") != null) {%>
                 <div class="alert alert-danger" role="alert">

@@ -170,7 +170,7 @@
             </form>
 
             <!-- Display existing categories -->
-            <h2>Existing Categories</h2>
+            <h2>Existing Products</h2>
             <table>
                 <thead>
                     <tr>

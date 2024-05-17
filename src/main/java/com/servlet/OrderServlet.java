@@ -112,14 +112,16 @@ public class OrderServlet extends HttpServlet {
 
                 doc.add(starline);
                 Paragraph msg = new Paragraph("Thank you, Please visit Again");
-
+                doc.add(msg);
+                
+                
             } catch (DocumentException e) {
                 e.printStackTrace();
             } finally {
                 // Fermeture du document PDF
                 doc.close();
             }
-
+            
             // Redirection vers la page où afficher le lien vers la facture PDF
             // Envoi du fichier PDF dans la réponse HTTP
             String billId = "Facture";
@@ -136,14 +138,18 @@ public class OrderServlet extends HttpServlet {
             while ((bytesRead = bis.read(buffer, 0, 8192)) != -1) {
                 os.write(buffer, 0, bytesRead);
             }
-
+            
             os.flush();
             os.close();
             bis.close();
             fis.close();
+            
+            request.setAttribute("Success", "Bill Downloaded Successfully");
+            request.getRequestDispatcher("placeOrder.jsp").forward(request, response);
 
         } else {
-            System.out.println("No products found");
+            request.setAttribute("Failed", "Bill Vide !");
+            request.getRequestDispatcher("placeOrder.jsp").forward(request, response);
         }
 
         // Création du document PDF

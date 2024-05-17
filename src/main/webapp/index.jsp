@@ -15,10 +15,10 @@
         <style>
             body {
                 background-color: #f8f9fa;
-                padding-top: 50px;
+                
             }
             .form-login {
-                max-width: 330px;
+                max-width: 430px;
                 padding: 15px;
                 margin: auto;
             }
@@ -69,6 +69,18 @@
             .w3-padding-64{
                 color :white;
             }
+            .container {
+                margin-left: 250px; /* Same width as the sidebar */
+                padding: 20px;
+                height: 100%;
+                position: fixed;
+                background-image: url('img/back.jpg'); /* Add your background image path here */
+                background-size: cover; /* Ensures the background image covers the entire container */
+                background-position: center; /* Centers the background image */
+                background-repeat: no-repeat; 
+                color: #198754; /* Optional: sets text color to white for better contrast */
+                text-align: center;
+            }
         </style>
     </head>
     <body>
@@ -84,6 +96,7 @@
         </div>
 
         <div class="container">
+            <br><br><br>
             <%-- Check if user is logged in --%>
             <%
                 String username = (String) session.getAttribute("username");
@@ -91,7 +104,7 @@
             %>
             <!-- Login Form -->
             <form class="form-login" action="LoginServlet" method="post">
-                <h2 class="mb-3">Login</h2>
+                <h1 class="mb-3" style="font-family: Monotype Corsiva"><br>LOGIN<br></h1>
                 
                 <% if (request.getAttribute("error") != null) { %>
                 <div class="alert alert-danger" role="alert">

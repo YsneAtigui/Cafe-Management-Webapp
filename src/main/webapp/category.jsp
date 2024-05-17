@@ -105,8 +105,8 @@
             <br><br>
             <h5>
                 <a href="home.jsp">Home</a>
-                <a href="category.jsp">Category management</a>
-                <a href="product.jsp">Product management</a>
+                <a href="category.jsp">Category Management</a>
+                <a href="product.jsp">Product Management</a>
                 <a href="placeOrder.jsp">Place Order</a>
                 <a href="changePassword.jsp">Change Password</a>
                 <a href="index.jsp">Logout</a>

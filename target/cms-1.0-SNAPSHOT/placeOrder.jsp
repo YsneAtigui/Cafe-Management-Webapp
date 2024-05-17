@@ -113,8 +113,8 @@
             <br><br><br>
             <h5>
                 <a href="home.jsp">Home</a>
-                <a href="category.jsp">Category management</a>
-                <a href="product.jsp">Product management</a>
+                <a href="category.jsp">Category Management</a>
+                <a href="product.jsp">Product Management</a>
                 <a href="placeOrder.jsp">Place Order</a>
                 <a href="changePassword.jsp">Change Password</a>
                 <a href="index.jsp">Logout</a>
@@ -136,7 +136,7 @@
                         <label for="mobile">Mobile Number:</label>&nbsp;&nbsp;
                         <input type="tel" id="mobile" name="mobile" required>
                         <br><br>
-                        
+
                         <label for="category">Select Category:</label>
                         <select id="category" name="category" required>
                             <option value="">Select a category</option>
@@ -166,11 +166,11 @@
                     </table>
                 </div>
             </div>
-                        <br><br>
+            <br><br>
             <div class="add-product-form">
                 <h2>Add Product</h2>
                 <br>
-                <form id="addProductForm" action="AddProductServlet" method="post">
+                <form id="addProductForm">
                     <label for="productName">Product Name:</label>&nbsp;&nbsp;
                     <input type="text" id="productName" name="productName" required>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -179,7 +179,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label for="totalPrice">Total Price:</label>&nbsp;&nbsp;
                     <input type="number" id="totalPrice" name="totalPrice" readonly>
-                    
+
                     <br><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label for="quantity">Quantity:</label>&nbsp;&nbsp;
@@ -191,23 +191,33 @@
                 </form>
             </div>
             <div class="product-table">
-                <h2>Products</h2>
-                <table id="productTable">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody id="productTableBody2">
-                    </tbody>
-                </table>
-                
+                <form id="generateBillForm" action="OrderServlet" method="post">
+                    <h2>Products</h2>
+                    <table id="productTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody2">
+                        </tbody>
+                    </table>
+
+                    
+                </form>
+
+                <form id="combinedForm" action="OrderServlet" method="post" style="display:none;"></form>
+
+                <button type="button" onclick="submitCombinedForm()">Generate Bill</button>
+
             </div>
-                        <button onclick="postData()">Post Table Values</button>
+
+
+
         </div>
         <script>
             function fetchProducts() {
@@ -270,21 +280,42 @@
                 }
 
                 var total = price * quantity;
-
+                var grandtotal = grandtotal + total;
                 var tableBody = document.getElementById("productTableBody2");
                 var newRow = tableBody.insertRow();
 
                 var nameCell = newRow.insertCell();
                 nameCell.textContent = productName;
+                var nameInput = document.createElement("input");
+                nameInput.type = "hidden";
+                nameInput.name = "nameCell";
+                nameInput.value = productName;
+                nameCell.appendChild(nameInput);
 
                 var priceCell = newRow.insertCell();
                 priceCell.textContent = price.toFixed(2);
+                var priceInput = document.createElement("input");
+                priceInput.type = "hidden";
+                priceInput.name = "priceCell";
+                priceInput.value = price.toFixed(2);
+                priceCell.appendChild(priceInput);
 
                 var quantityCell = newRow.insertCell();
                 quantityCell.textContent = quantity;
+                var quantityInput = document.createElement("input");
+                quantityInput.type = "hidden";
+                quantityInput.name = "quantityCell";
+                quantityInput.value = quantity;
+                quantityCell.appendChild(quantityInput);
 
                 var totalCell = newRow.insertCell();
                 totalCell.textContent = total.toFixed(2);
+                var totalInput = document.createElement("input");
+                totalInput.type = "hidden";
+                totalInput.name = "totalCell";
+                totalInput.value = total.toFixed(2);
+                totalCell.appendChild(totalInput);
+
 
                 var deleteCell = newRow.insertCell();
                 var deleteLink = document.createElement("a");
@@ -295,8 +326,43 @@
                     tableBody.removeChild(row);
                 };
                 deleteCell.appendChild(deleteLink);
+
             }
 
+            function submitCombinedForm() {
+            // Get references to the forms
+            var orderForm = document.getElementById('orderForm');
+            var productForm = document.getElementById('generateBillForm');
+            var combinedForm = document.getElementById('combinedForm');
+
+            // Clear the combined form
+            combinedForm.innerHTML = '';
+
+            // Copy elements from orderForm to combinedForm
+            Array.from(orderForm.elements).forEach(function(element) {
+                if (element.name && element.value) {
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = element.name;
+                    input.value = element.value;
+                    combinedForm.appendChild(input);
+                }
+            });
+
+            // Copy elements from productForm to combinedForm
+            Array.from(productForm.elements).forEach(function(element) {
+                if (element.name && element.value) {
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = element.name;
+                    input.value = element.value;
+                    combinedForm.appendChild(input);
+                }
+            });
+
+            // Submit the combined form
+            combinedForm.submit();
+        }
         </script>
     </body>
 </html>
